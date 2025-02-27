@@ -11,7 +11,9 @@ function Search() {
     const [data, setData] = useState([]);
     let [loader, setLoader] = useState(false);
     const navigate = useNavigate();
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     useEffect(() => {
         let loader = async () => {
             try {
