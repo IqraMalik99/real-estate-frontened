@@ -1,4 +1,3 @@
-import React from 'react'
 import { app } from '../firebase.js';
 import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
@@ -33,7 +32,7 @@ function OAuth() {
         navigate("/sign-in")
       }
     } catch (error) {
-      console.log(`Having error in Google Auth ${error}`);
+      console.error(`Error in Google Auth:`, error.response ? error.response.data : error.message);
     }
   }
   return (
