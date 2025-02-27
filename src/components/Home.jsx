@@ -7,8 +7,9 @@ import { useInView } from 'react-intersection-observer';
 import { MdLocationOn } from 'react-icons/md';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'; // Social media icons
 import { useDispatch } from 'react-redux';
-import { userLogin, userLogout } from '../store/reducer';
-import { userState } from '../store/reducer';
+import { userLogin, userLogout } from '../store/reducer.js';
+import { userState } from '../store/reducer.js';
+import { persistor } from '../store/store.js'; 
 function Home() {
   let [page1, setpage1] = useState(0);
   let [page2, setpage2] = useState(0); // New state for Page 3
@@ -20,7 +21,9 @@ function Home() {
   let automatedLogin = async () => {
     let res = await axios.get('https://realestae-backened-production.up.railway.app/user/automatedlogin', { withCredentials: true });
     if (res.data.data == null) {
-      dispatch(userLogout());
+       persistor.purge();
+        dispatch(userLogout());
+
     } else {
                   let userdata={
                       username:res.data.data.user.username,
