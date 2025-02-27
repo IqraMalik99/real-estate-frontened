@@ -147,7 +147,7 @@ function List() {
 className='rounded-lg p-2 my-3 h-12 bg-white/30 backdrop-blur-lg shadow-md focus:outline-none w-72'
 type="file"
 id="file"
-{...register('files')} t
+{...register('files')} 
 multiple
 />
 <button type="submit" className='w-32 h-10 bg-black rounded-lg'>Create</button>
