@@ -20,7 +20,9 @@ function Home() {
 
   let automatedLogin = async () => {
     let res = await axios.get('https://realestae-backened-production.up.railway.app/user/automatedlogin', { withCredentials: true });
-    if (res.data.data == null) {
+    console.log(res.data.data ,res.data,"res from automated");
+    
+    if (!res.data.data) {
        persistor.purge();
         dispatch(userLogout());
 
@@ -31,8 +33,8 @@ function Home() {
                       avatar:res.data.data.user.avatar,
                       _id:res.data.data.user._id
                   }
-                  dispatch(userState(userdata ))
                   dispatch(userLogin())
+                  dispatch(userState(userdata ))
                   navigate('/')
     }
   };
