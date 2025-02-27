@@ -15,8 +15,6 @@ function Header() {
     navigate(`/search?searchTerm=${encodeURIComponent(data)}`);
   };
 
-
-
   return (
     <div className="group px-4 sm:px-6 text-white flex flex-col justify-center items-center w-screen bg-gradient-to-r from-gray-500 to-black h-20 fixed top-0 z-50 transition-all duration-700 ease-in-out hover:h-48">
       {/* Top Row (Logo, Search Bar, Navigation Links) */}
@@ -24,7 +22,7 @@ function Header() {
         {/* Logo */}
         <Link
           to="/"
-          className=" mt-5 font-bold text-xl sm:text-2xl hover:text-gray-300"
+          className="mt-5 font-bold text-xl sm:text-2xl hover:text-gray-300"
         >
           Real Estate
         </Link>
@@ -35,7 +33,7 @@ function Header() {
             <input
               value={data}
               onChange={(e) => setData(e.target.value)}
-              className="focus:outline-none  w-full bg-transparent text-black placeholder-gray-600"
+              className="focus:outline-none w-full bg-transparent text-black placeholder-gray-600"
               placeholder="Search ..."
               aria-label="Search properties"
             />
@@ -52,34 +50,35 @@ function Header() {
               Home
             </Link>
           </li>
-         
+
           {/* Conditional Rendering for Auth Links */}
           {logged ? (
             <div className="relative">
               {/* Profile Image with Dropdown */}
               <Link
-                    to="/profile"
+                to="/profile"
                 aria-label="User profile"
-                className="focus:outline-none "
+                className="focus:outline-none"
               >
-                <img
-                  className="mt-5 w-9 h-9 sm:w-12 sm:h-12 object-cover rounded-full border-2 border-white hover:border-gray-300"
-                  src={Userstate?.avatar || "https://via.placeholder.com/150"} // Fallback avatar
-                  alt="Profile"
-                />
-         </Link>
-
-             
+                {/* Ensure the container is square */}
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white hover:border-gray-300">
+                  <img
+                    className="w-full h-full object-cover"
+                    src={Userstate?.avatar || "https://via.placeholder.com/150"} // Fallback avatar
+                    alt="Profile"
+                  />
+                </div>
+              </Link>
             </div>
           ) : (
             <>
               {/* Hide "Sign Up" and "Sign In" on small screens */}
-              <li className=" mt-5 hover:underline font-semibold hidden sm:block">
+              <li className="mt-5 hover:underline font-semibold hidden sm:block">
                 <Link to="/sign-up" className="hover:text-gray-300">
                   Sign Up
                 </Link>
               </li>
-              <li className=" mt-5 hover:underline font-semibold hidden sm:block">
+              <li className="mt-5 hover:underline font-semibold hidden sm:block">
                 <Link to="/sign-in" className="hover:text-gray-300">
                   Sign In
                 </Link>
@@ -103,18 +102,15 @@ function Header() {
             </>
           )}
           <li className="hover:underline font-semibold">
-            <Link
-              to="/sign-out"
-             className="hover:text-gray-300"
-            >
+            <Link to="/sign-out" className="hover:text-gray-300">
               Sign Out
             </Link>
           </li>
-          <li className="hover:underline font-semibold ">
-                <Link to="/sign-up" className="hover:text-gray-300">
-                  Sign Up
-                </Link>
-              </li>
+          <li className="hover:underline font-semibold">
+            <Link to="/sign-up" className="hover:text-gray-300">
+              Sign Up
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
