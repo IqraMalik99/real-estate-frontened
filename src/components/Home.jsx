@@ -381,7 +381,7 @@ function Home() {
   let dispatch = useDispatch();
 
   let automatedLogin = async () => {
-    let res = await axios.get('https://realestae-backened-production.up.railway.app/user/automatedlogin', { withCredentials: true });
+    let res = await axios.get('https://realestae-backened-production.up.railway.app/user/autoLogin', { withCredentials: true });
     console.log(res.data.data, res.data, "res from automated");
 
     if (!res.data.data) {
