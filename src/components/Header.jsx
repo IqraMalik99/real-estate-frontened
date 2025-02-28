@@ -61,7 +61,7 @@ function Header() {
                 className="focus:outline-none"
               >
                 {/* Ensure the container is square */}
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white hover:border-gray-300">
+                <div className="mt-5 w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-white hover:border-gray-300">
                   <img
                     className="w-full h-full object-cover"
                     src={Userstate?.avatar || "https://via.placeholder.com/150"} // Fallback avatar
