@@ -12,6 +12,7 @@ import { userLogin, userLogout } from '../store/reducer.js';
 import { userState } from '../store/reducer.js';
 import { persistor } from '../store/store.js';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 function Home() {
   let [page1, setpage1] = useState(0);
   let [page2, setpage2] = useState(0); // New state for Page 3
@@ -77,7 +78,11 @@ const { login } = useSelector((state) => state.user);
           navigate(`/all/${id}`);  
             }
             else{
-          navigate(`/`);      
+          navigate(`/`);
+          toast.warn("Please login to see details!", {
+            position: "top-center",
+            autoClose: 2000, // 2 seconds
+          });  
             }
   };
 
