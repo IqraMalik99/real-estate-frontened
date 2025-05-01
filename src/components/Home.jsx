@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { userLogin, userLogout } from '../store/reducer.js';
 import { userState } from '../store/reducer.js';
 import { persistor } from '../store/store.js';
-
+import { useSelector } from 'react-redux';
 function Home() {
   let [page1, setpage1] = useState(0);
   let [page2, setpage2] = useState(0); // New state for Page 3
@@ -19,6 +19,7 @@ function Home() {
   let [list2, setlist2] = useState([]); // New state for Page 3 data
   let navigate = useNavigate();
   let dispatch = useDispatch();
+const { login } = useSelector((state) => state.user);
 
   let automatedLogin = async () => {
     try {
@@ -72,7 +73,12 @@ function Home() {
 
   let detailHandler = (id) => {
     console.log(id);
-    navigate(`/all/${id}`);
+            if(login){
+          navigate(`/all/${id}`);  
+            }
+            else{
+          navigate(`/`);      
+            }
   };
 
   useEffect(() => {
