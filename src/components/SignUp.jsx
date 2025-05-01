@@ -20,7 +20,7 @@ function SignUp() {
     let onSubmit = async (data) => {
         try {
             console.log(data);
-            const response = await axios.post('https://realestae-backened-production.up.railway.app/user/sign-up', data);
+            const response = await axios.post('https://realestae-backened-production.up.railway.app/user/sign-up', data, { withCredentials: true });
             console.log('Response from server:', response.data);
             reset();
             let userdata = {
