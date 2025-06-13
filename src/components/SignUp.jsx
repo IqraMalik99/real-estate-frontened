@@ -84,7 +84,7 @@ function SignUp() {
                         </button>
 
                         {/* OAuth Component */}
-                        <OAuth />
+{/*                         <OAuth /> */}
 
                         {/* Sign-in link */}
                         <div className="text-center">
