@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 function List() {
     let navigate = useNavigate();
     let [loaderz,setLoading]=useState(false)
-    const { handleSubmit, register, reset } = useForm({
+    const { handleSubmit, register, reset,watch, setValue  } = useForm({
         defaultValues: {
             sell: false,
             rent: false,
@@ -16,6 +16,9 @@ function List() {
             offer: false
         }
     });
+    const isRent = watch('rent');
+    const isSell = watch('sell');
+
     let key = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     
     let submit = async (data) => {
@@ -74,21 +77,29 @@ function List() {
                         <textarea {...register('address', { required: true })}
                             placeholder="Address..." rows="2" cols="50" className='rounded-lg p-2 my-3  bg-white/30 backdrop-blur-lg shadow-md focus:outline-none w-72' />
                         <div className='flex gap-4 flex-wrap'>
-                            <input
-                                type="checkbox"
-                                id="sell"
-                                {...register('sell')} // Register the checkbox
-                                className="mr-2"
-                            />
-                            <label htmlFor="sell">Sell</label>
+                           input
+  type="checkbox"
+  id="sell"
+  {...register('sell')}
+  onChange={(e) => {
+    setValue('sell', e.target.checked);
+    setValue('rent', false); // uncheck rent
+  }}
+  className="mr-2"
+/>
+<label htmlFor="sell">Sell</label>
 
-                            <input
-                                type="checkbox"
-                                id="rent"
-                                {...register('rent')} // Register the checkbox
-                                className="mr-2"
-                            />
-                            <label htmlFor="rent">Rent</label>
+<input
+  type="checkbox"
+  id="rent"
+  {...register('rent')}
+  onChange={(e) => {
+    setValue('rent', e.target.checked);
+    setValue('sell', false); // uncheck sell
+  }}
+  className="mr-2"
+/>
+<label htmlFor="rent">Rent</label>
 
                             <input
                                 type="checkbox"
@@ -139,7 +150,9 @@ function List() {
                         </div>
                         <div className='flex gap-2 items-end '>
                             <input type="text" {...register('amount', { required: true })}  className='rounded-lg p-2 my-3 h-8 bg-white/30 backdrop-blur-lg shadow-md focus:outline-none w-20' />
-                            <p className='pb-5'>Monthly income ($/month)</p>
+                           <p className='pb-5'>
+            {isRent ? 'Monthly Rent ($/month)' : isSell ? 'Price for Sale ($)' : 'Amount ($)'}
+                             </p>
                         </div>
                     </div>
                   <div className='w-1/2 flex flex-col justify-center items-center'>
