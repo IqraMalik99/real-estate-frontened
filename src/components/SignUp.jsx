@@ -30,8 +30,9 @@ function SignUp() {
                 _id: response.data.data.user._id
             };
             dispatch(userState(userdata));
+             navigate('/sign-in');
             dispatch(userLogin());
-            navigate('/');
+           
         } catch (error) {
             console.error('Error submitting form:', error);
         }
