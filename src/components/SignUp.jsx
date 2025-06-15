@@ -21,7 +21,8 @@ function SignUp() {
         try {
             console.log(data);
             const response = await axios.post('https://realestae-backened-production.up.railway.app/user/sign-up', data, { withCredentials: true });
-            console.log('Response from server:', response.data);
+            console.log('Response from server:', response.data.data.data.username);
+              console.log('Response from server:', response.data.data.username);
             reset();
             let userdata = {
                 username: response.data.data.user.username,
