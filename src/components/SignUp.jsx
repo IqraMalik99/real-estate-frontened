@@ -24,10 +24,10 @@ function SignUp() {
               console.log('Response from server:', response.data.data);
             reset();
             let userdata = {
-                username: response.data.data.user.username,
-                email: response.data.data.user.email,
-                avatar: response.data.data.user.avatar,
-                _id: response.data.data.user._id
+                username: response.data.data.username,
+                email: response.data.data.email,
+                avatar: response.data.data.avatar,
+                _id: response.data.data._id
             };
              navigate('/sign-in');
             dispatch(userState(userdata));
