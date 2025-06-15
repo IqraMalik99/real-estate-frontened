@@ -29,9 +29,10 @@ function SignUp() {
                 avatar: response.data.data.user.avatar,
                 _id: response.data.data.user._id
             };
-            dispatch(userState(userdata));
              navigate('/sign-in');
+            dispatch(userState(userdata));
             dispatch(userLogin());
+            
            
         } catch (error) {
             console.error('Error submitting form:', error);
